@@ -37,7 +37,7 @@
     color: #fff;
     background: #070F2B;
 }
-.repo-section
+.repo-section, .following-card
 {
     padding: 20px;
     border: 2px solid red;
@@ -65,12 +65,13 @@
     width: 16vw;
     height: 25vh;
     border: 2px solid red;
+    
 }
 .repo-image-holder{
     height: 20vh;
     border: 2px solid red;
 }
-.repo-image, .followers-image{
+.repo-image, .followers-image, .following-image{
     height: 100%;
     width: 100%;
     display: block;
@@ -88,7 +89,7 @@
 
 }
 
-.followers-logo{
+.followers-logo ,.following-logo{
     height: 15vh;
     width: 15vw;
     border: 2px solid red;
