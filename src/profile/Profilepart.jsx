@@ -16,7 +16,7 @@ const Profilesection = ({profileimg, username, othername,Description,link,usersr
         <section className="profile-sector">
           <div className="profile-section">
             <div className="profile-logo">
-              <img src={profileimg}></img>
+              <img src={profileimg} alt="fyyfyfytfvtyv"></img>
             </div>
             <div className="info-section">
               <h2>{username}</h2>
@@ -81,18 +81,42 @@ const RepositoryPart = ({ title, description, forks, stars, repolink }) => {
 const FollowersPart = ({followersimage, followersname, details}) => {
     return (
       <>
-        <div className="followers-sector">
-          <h2 className="followers-header">Followers(30)</h2>
-          <div className="followers-section">
+        <div className="repository-sector">
+          <h2 className="repo-header">Followers(30)</h2>
+          <div className="repo-section">
             <div className="followers-card">
               <div className="followers-logo">
                 <img className="followers-image" src={followersimage}></img>
               </div>
-              <div className="card-detail">
+              <div className="card-detail-followers">
                 <p>{followersname}</p>
                 <button onClick={() => details(followersname)}>
                   {<IoLinkSharp />}
                   view {followersname}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  };
+
+const FollowingPart = ({ followingimage, followingname, followingdetails }) => {
+    return (
+      <>
+        <div className="repository-sector">
+          <h2 className="repo-header">Followers(30)</h2>
+          <div className="repo-section">
+            <div className="followers-card">
+              <div className="followers-logo">
+                <img className="followers-image" src={followingimage}></img>
+              </div>
+              <div className="card-detail-followers">
+                <p>{followingname}</p>
+                <button onClick={() => followingdetails(followingname)}>
+                  {<IoLinkSharp />}
+                  view {followingname}
                 </button>
               </div>
             </div>
@@ -122,6 +146,7 @@ const Profilepart =()=>{
            try {
              const usersrepo = await fetch(
                `https://api.github.com/users/${username}/repos`
+               
              );
              if (usersrepo == null) {
                console.log("no repository found");
@@ -164,7 +189,7 @@ const Profilepart =()=>{
 
     return (
       <>
-        <div className="profile-sector">
+        <div className="">
           {isLoading ? (
             <p className="loading">Loading profile....</p>
           ) : (
@@ -187,13 +212,12 @@ const Profilepart =()=>{
               <p className="loading">Loading GitHub's repositories......</p>
             ) : (
               <div className="">
-                {usersrepo.map((repos, i) => (
+                {usersrepo.map((repos) => (
                   <RepositoryPart
-                    key={i}
                     title={repos.name}
                     description={repos.description}
                     forks={repos.forks}
-                    stars={repos.stars}
+                    stars={repos.stargazers_count}
                     repolink={repos.clone_url}
                   />
                 ))}
@@ -214,19 +238,19 @@ const Profilepart =()=>{
               </div>
             )}
 
-            {/* {isLoading ? (
+            {isLoading ? (
               <p className="loading">Fetching following.....</p>
             ) : (
               <div className="followersSect">
                 {userfollowing.map((following, i) => (
-                  <FollowersPart
+                  <FollowingPart
                     followerImg={following.avatar_url}
                     followerName={following.login}
-                    details={details}
+                    followingdetails={followingdetails}
                   />
                 ))}
               </div>
-            )} */}
+            )}
           </div>
         </div>
       </>

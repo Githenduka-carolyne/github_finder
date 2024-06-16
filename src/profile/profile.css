@@ -37,8 +37,8 @@
     color: #fff;
     background: #070F2B;
 }
-.repo-section ,
-.followers-sector{
+.repo-section
+{
     padding: 20px;
     border: 2px solid red;
     display: flex;
@@ -47,7 +47,7 @@
     margin-left: 20rem;
 }
 
-.repo-header,.followers-header{
+.repo-header, .followers-header{
     display: flex;
     flex-direction: column;
     margin-top: 5rem;
@@ -59,10 +59,14 @@
 
 .repository-card{
     width: 25vw;
+    border: 2px solid red;
+}
+.followers-card {
+    width: 16vw;
     height: 25vh;
     border: 2px solid red;
 }
-.repo-image-holder,.followers-logo{
+.repo-image-holder{
     height: 20vh;
     border: 2px solid red;
 }
@@ -70,6 +74,7 @@
     height: 100%;
     width: 100%;
     display: block;
+    object-fit: cover;
     border: 2px solid red;
 }
 .card-detail{
@@ -82,8 +87,19 @@
     border: 2px solid red;
 
 }
-.followers-card{
-    width: 10vw;
-        height: 10vh;
+
+.followers-logo{
+    height: 15vh;
+    width: 15vw;
+    border: 2px solid red;
+}
+.card-detail-followers{
+    display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        margin-top: 10px;
         border: 2px solid red;
 }
+
