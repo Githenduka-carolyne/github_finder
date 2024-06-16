@@ -1,12 +1,11 @@
-.profile-sector{
-    display: flex;
-    flex-direction: wrap;
+.profile-container{
+    height: 100vh;
+    width: 60%;
+    float: left;
 }
-
 .profile-section{
     display: flex;
     flex-direction: column;
-    justify-content: left;
     padding: 10px 40px;
     position: fixed;
     margin-top: 4rem;
@@ -21,86 +20,6 @@
     display: block;
     border-radius: 20px;
 }
-.info-section{
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    gap:10px;
-  
+.repository-container{
+  border:  2px solid red;
 }
-.gitbtn{
-    font-size: 20px;
-    width: 20vw;
-    padding: 10px;
-    border-radius: 5px;
-    color: #fff;
-    background: #070F2B;
-}
-.repo-section, .following-card
-{
-    padding: 20px;
-    border: 2px solid red;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 3rem;
-    margin-left: 20rem;
-}
-
-.repo-header, .followers-header{
-    display: flex;
-    flex-direction: column;
-    margin-top: 5rem;
-    margin-left: 20rem;
-    font-size: 30px;
-    align-items: left;
-    border: 2px solid red;
-}
-
-.repository-card{
-    width: 25vw;
-    border: 2px solid red;
-}
-.followers-card {
-    width: 16vw;
-    height: 25vh;
-    border: 2px solid red;
-    
-}
-.repo-image-holder{
-    height: 20vh;
-    border: 2px solid red;
-}
-.repo-image, .followers-image, .following-image{
-    height: 100%;
-    width: 100%;
-    display: block;
-    object-fit: cover;
-    border: 2px solid red;
-}
-.card-detail{
-    display: flex; 
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    margin-top: 71px;
-    border: 2px solid red;
-
-}
-
-.followers-logo ,.following-logo{
-    height: 15vh;
-    width: 15vw;
-    border: 2px solid red;
-}
-.card-detail-followers{
-    display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        gap: 1rem;
-        margin-top: 10px;
-        border: 2px solid red;
-}
-

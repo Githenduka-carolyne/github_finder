@@ -18,7 +18,7 @@ const Profilesection = ({
   userfollower,
   userfollowing,
 }) => (
-  <section className="profile-sector">
+  
     <div className="profile-section">
       <div className="profile-logo">
         <img src={profileimg} alt="Profile"></img>
@@ -46,44 +46,52 @@ const Profilesection = ({
         </p>
       </div>
     </div>
-  </section>
 );
 
-const RepositoryPart = ({ title, description, forks, stars, repolink }) => (
-  <div className="repository-card">
-    <div className="repo-name">
-      <p>{title}</p>
-      <p>{description}</p>
+const RepositoryPart = ({ title, description, forks, stars }) => (
+  
+    <div className="repository-card">
+      <div className="repo-name">
+        <p>{title}</p>
+        <p>{description}</p>
+      </div>
+      <div className="card-detail">
+        <p>
+          <LuGitFork />
+          {forks} forks
+        </p>
+        <p>
+          <FaStar />
+          {stars} stars
+        </p>
+      </div>
     </div>
-    <div className="card-detail">
-      <p>
-        <LuGitFork />
-        {forks} forks
-      </p>
-      <p>
-        <FaStar />
-        {stars} stars
-      </p>
-    </div>
-  </div>
+  
 );
 
 const FollowersPart = ({ followersimage, followersname, details }) => (
-  <div className="followers-card">
-    <div className="followers-logo">
-      <img className="followers-image" src={followersimage} alt="Follower"></img>
+ 
+    <div className="followers-card">
+      <div className="followers-logo">
+        <img
+          className="followers-image"
+          src={followersimage}
+          alt="Follower"
+        ></img>
+      </div>
+      <div className="card-detail-followers">
+        <p>{followersname}</p>
+        <button onClick={() => details(followersname)}>
+          <IoLinkSharp />
+          View {followersname}
+        </button>
+      </div>
     </div>
-    <div className="card-detail-followers">
-      <p>{followersname}</p>
-      <button onClick={() => details(followersname)}>
-        <IoLinkSharp />
-        View {followersname}
-      </button>
-    </div>
-  </div>
+
 );
 
 const FollowingPart = ({ followingimage, followingname, followingdetails }) => (
+  <div className="following-container">
   <div className="following-card">
     <div className="following-logo">
       <img className="following-image" src={followingimage} alt="Following"></img>
@@ -94,6 +102,7 @@ const FollowingPart = ({ followingimage, followingname, followingdetails }) => (
         <IoLinkSharp />
         View {followingname}
       </button>
+    </div>
     </div>
   </div>
 );
@@ -162,6 +171,7 @@ const Profilepart = () => {
   };
 
   return (
+    <div>
     <div className="profile-container">
       {isLoading ? (
         <p className="loading">Loading profile...</p>
@@ -177,18 +187,17 @@ const Profilepart = () => {
             link={userinfo.html_url}
             usersrepo={userinfo.public_repos}
             userfollower={userinfo.followers}
-            userfollowing={userinfo.following}
-          />
+            userfollowing={userinfo.following} />
         )
       )}
-
-      <div className="repository-section">
+    </div>
+    <div className="repo">
         {isLoading ? (
           <p className="loading">Loading GitHub repositories...</p>
         ) : error ? (
           <p className="error">{error}</p>
         ) : (
-          <div>
+          <div className="repository-container">
             {usersrepo.map((repos) => (
               <RepositoryPart
                 key={repos.id}
@@ -196,51 +205,47 @@ const Profilepart = () => {
                 description={repos.description}
                 forks={repos.forks}
                 stars={repos.stargazers_count}
-                repolink={repos.clone_url}
-              />
+                repolink={repos.clone_url} />
             ))}
           </div>
         )}
       </div>
-
       <div className="followers-section">
         {isLoading ? (
           <p className="loading">Loading followers...</p>
         ) : error ? (
           <p className="error">{error}</p>
         ) : (
-          <div>
+          <div className="followers-container">
             {userfollower.map((follower, i) => (
               <FollowersPart
                 key={i}
                 followersimage={follower.avatar_url}
                 followersname={follower.login}
-                details={details}
-              />
+                details={details} />
             ))}
           </div>
         )}
       </div>
-
       <div className="following-section">
         {isLoading ? (
           <p className="loading">Loading following...</p>
         ) : error ? (
           <p className="error">{error}</p>
         ) : (
-          <div>
+          <div className="following-container">
             {userfollowing.map((following, i) => (
               <FollowingPart
                 key={i}
                 followingimage={following.avatar_url}
                 followingname={following.login}
-                followingdetails={details}
-              />
+                followingdetails={details} />
             ))}
           </div>
         )}
       </div>
-    </div>
+      </div>
+   
   );
 };
 
