@@ -1,0 +1,28 @@
+.head-section{
+background-color: #070F2B;
+position:fixed;
+z-index: 100;
+width: 100%;
+
+}
+.head-wrapper{
+    padding: 13px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+   
+}
+.logo{
+    font-size: 30px;
+    text-transform: capitalize;
+    color: #CCD2DA;
+}
+.link-side a{
+    color: #CCD2DA;
+    letter-spacing: 1px;
+    
+}
+input, .btn{
+    padding:10px;
+}
