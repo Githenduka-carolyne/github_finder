@@ -4,7 +4,7 @@ import UserDetails from "../store/store"
 const Headerpart = ()=>{
 
    const [inputvalue, setinputvalue] = useState(" ");
-   const username = UserDetails((state) => state.setUsername);
+   const username = UserDetails((state) => state.setusername);
    const fetchuserdata = UserDetails((state) => state.fetchuserdata);
 
     const handleSearch = () => {

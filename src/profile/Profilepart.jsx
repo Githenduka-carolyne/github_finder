@@ -52,7 +52,9 @@ const RepositoryPart = ({ title, description, forks, stars, repolink }) => {
       <div className="repository-sector">
         <h2 className="repo-header">Repository(30)</h2>
         <div className="repo-section">
-          <a href={repolink} target="_blank"></a>
+          <div className="link">
+            <a href={repolink} target="_blank"></a>
+          </div>
           <div className="repository-card">
             <div className="repo-name">
               <p>{title}</p>
@@ -80,11 +82,11 @@ const FollowersPart = ({followersimage, followersname, details}) => {
     return (
       <>
         <div className="followers-sector">
-          <h2 className="followers-header">Repository(30)</h2>
+          <h2 className="followers-header">Followers(30)</h2>
           <div className="followers-section">
             <div className="followers-card">
               <div className="followers-logo">
-                <img src={followersimage}></img>
+                <img className="followers-image" src={followersimage}></img>
               </div>
               <div className="card-detail">
                 <p>{followersname}</p>
@@ -197,10 +199,10 @@ const Profilepart =()=>{
                 ))}
               </div>
             )}
-            {/* {isLoading ? (
+            {isLoading ? (
               <p className="loading">Fetching followers......</p>
             ) : (
-              <div className="FollowersPart">
+              <div className="">
                 {userfollower.map((followers, i) => (
                   <FollowersPart
                     key={i}
@@ -210,7 +212,7 @@ const Profilepart =()=>{
                   />
                 ))}
               </div>
-            )} */}
+            )}
 
             {/* {isLoading ? (
               <p className="loading">Fetching following.....</p>

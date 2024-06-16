@@ -37,7 +37,8 @@
     color: #fff;
     background: #070F2B;
 }
-.repo-section{
+.repo-section ,
+.followers-sector{
     padding: 20px;
     border: 2px solid red;
     display: flex;
@@ -45,7 +46,8 @@
     gap: 3rem;
     margin-left: 20rem;
 }
-.repo-header{
+
+.repo-header,.followers-header{
     display: flex;
     flex-direction: column;
     margin-top: 5rem;
@@ -60,11 +62,11 @@
     height: 25vh;
     border: 2px solid red;
 }
-.repo-image-holder{
+.repo-image-holder,.followers-logo{
     height: 20vh;
     border: 2px solid red;
 }
-.repo-image{
+.repo-image, .followers-image{
     height: 100%;
     width: 100%;
     display: block;
@@ -76,7 +78,12 @@
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    /* margin-top: 90px; */
+    margin-top: 71px;
     border: 2px solid red;
 
+}
+.followers-card{
+    width: 10vw;
+        height: 10vh;
+        border: 2px solid red;
 }
