@@ -184,7 +184,7 @@ const Profilepart =()=>{
             {isLoading ? (
               <p className="loading">Loading GitHub's repositories......</p>
             ) : (
-              <div className="repo-section">
+              <div className="">
                 {usersrepo.map((repos, i) => (
                   <RepositoryPart
                     key={i}
@@ -197,7 +197,7 @@ const Profilepart =()=>{
                 ))}
               </div>
             )}
-            {isLoading ? (
+            {/* {isLoading ? (
               <p className="loading">Fetching followers......</p>
             ) : (
               <div className="FollowersPart">
@@ -210,9 +210,9 @@ const Profilepart =()=>{
                   />
                 ))}
               </div>
-            )}
+            )} */}
 
-            {isLoading ? (
+            {/* {isLoading ? (
               <p className="loading">Fetching following.....</p>
             ) : (
               <div className="followersSect">
@@ -224,7 +224,7 @@ const Profilepart =()=>{
                   />
                 ))}
               </div>
-            )}
+            )} */}
           </div>
         </div>
       </>
