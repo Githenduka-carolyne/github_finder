@@ -1,25 +1,178 @@
-.profile-container{
-    height: 100vh;
-    width: 60%;
-    float: left;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-.profile-section{
+
+.profile-container {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: 20px auto;
+}
+
+.profile-section {
+    width: 30%;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.profile-section .profile-logo {
+    text-align: center;
+}
+
+.profile-section .profile-logo img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.profile-section .info-section {
+    margin-top: 20px;
+}
+
+.profile-section .info-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.profile-section .info-section p {
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.profile-section .info-section a {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    text-decoration: none;
+}
+
+.profile-section .info-section .gitbtn {
+    background-color: #070F2B;
+    color: #fff;
+    border: none;
+    padding:20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.profile-section .info-section .gitbtn:hover {
+    background-color: #0552b5;
+}
+
+.info-container {
+    width: 65%;
+}
+
+.repo-section,
+.followers-section,
+.following-section {
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.repo-section h2,
+.followers-section h2,
+.following-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.repository-container
+{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 10px;
+}
+.followers-container,
+.following-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 10px;
+    grid-template-rows: repeat(auto-fill, minmax(250px, 2fr));
+}
+
+.repository-card,
+.followers-card,
+.following-card {
+    background-color: #F1F1E6;
+    border: 1px solid #ddd;
+    margin:15px;
+    padding: 10px 0 0;
+    border-radius: 5px;
+}
+.card-detail{
+    display: flex;
+    justify-content: space-around;
+    background-color: #FFF7D6;
+    height: 40px;
+    align-items: center;
+}
+
+.repository-card .repo-name ,
+.following-card .card-detail-following {
+    margin-bottom: 10px;
+}
+
+.card-detail-followers, .card-detail-following{
     display: flex;
     flex-direction: column;
-    padding: 10px 40px;
-    position: fixed;
-    margin-top: 4rem;
+   align-items: center;
+   margin: auto;
+    width: 50%;
+    margin-bottom: 5px;
 }
-.profile-logo{
-    height: 40vh;
-    width: 20vw;
+
+.repository-card .repo-name p,
+.followers-card .card-detail-followers p,
+.following-card .card-detail-following p {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    padding: 10px;
 }
-.profile-logo img{
-    width: 100%;
-    height: 100%;
-    display: block;
-    border-radius: 20px;
+.repo-name h1{
+    padding: 10px;
+    font-weight: bold;
 }
-.repository-container{
-  border:  2px solid red;
+
+.repository-card .card-detail p,
+.followers-card .card-detail-followers p,
+.following-card .card-detail-following p {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.repository-card .card-detail p svg,
+.followers-card .card-detail-followers p svg,
+.following-card .card-detail-following p svg {
+    margin-right: 5px;
+}
+
+.followers-card .followers-logo,
+.following-card .following-logo {
+    text-align: center;
+ 
+    
+}
+
+.followers-card .followers-logo img,
+.following-card .following-logo img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.followers-card button,
+.following-card button {
+    background-color: #070F2B;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-top: 10px;
 }

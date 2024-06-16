@@ -1,42 +1,47 @@
-import "./header.css"
-import React, { useEffect, useState } from "react";
-import UserDetails from "../store/store"
-const Headerpart = ()=>{
+import React, { useState } from "react";
+import useUserStore from "../store/store";
+import "./header.css";
 
-   const [inputvalue, setinputvalue] = useState(" ");
-   const username = UserDetails((state) => state.setusername);
-   const fetchuserdata = UserDetails((state) => state.fetchuserdata);
+const Headerpart = () => {
+  const [inputValue, setInputValue] = useState("");
+  const setUsername = useUserStore((state) => state.setUsername);
+  const fetchUserData = useUserStore((state) => state.fetchUserData);
 
-    const handleSearch = () => {
-      username(inputvalue);
-      fetchuserdata(inputvalue);
-    };
+  const handleSearch = () => {
+    setUsername(inputValue);
+    fetchUserData(inputValue);
+  };
 
-    return (
-      <section className="head-section">
-        <div className="head-wrapper">
-          <div className="head-container">
-            <h1 className="logo">GITHUB FINDER</h1>
-          </div>
-          <div className="link-side">
-            <a href="https://github.com/githenduka-carolyne" target="_blank">
-              By Githenduka Carolyne
-            </a>
-          </div>
-          <div className="input-side">
-            <input
-              type="text"
-              placeholder="enter a username"
-              required
-              value={inputvalue}
-              onChange={(event) => setinputvalue(event.target.value)}
-            ></input>
-            <button className="btn" onClick={handleSearch}>
-              Search
-            </button>
-          </div>
+  return (
+    <section className="head-section">
+      <div className="head-wrapper">
+        <div className="head-container">
+          <h1 className="logo">GITHUB FINDER</h1>
         </div>
-      </section>
-    );
+        <div className="link-side">
+          <a
+            href="https://github.com/githenduka-carolyne"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            By Githenduka Carolyne
+          </a>
+        </div>
+        <div className="input-side">
+          <input
+            type="text"
+            placeholder="Enter a username"
+            required
+            value={inputValue}
+            onChange={(event) => setInputValue(event.target.value)}
+          />
+          <button className="btn" onClick={handleSearch}>
+            Search
+          </button>
+        </div>
+      </div>
+    </section>
+  );
 };
+
 export default Headerpart;

@@ -1,57 +1,63 @@
-import { create } from "zustand";
+import create from "zustand";
 
-const UserDetails = create((set)=>({
+const useStore = create((set) => ({
+  username: "github",
+  userinfo: null,
+  userrepos: [],
+  userfollowers: [],
+  userfollowing: [],
+  loading: false,
+  error: null,
 
-username: "github",
-userinfo: {},
+  setUsername: (newUsername) => set({ username: newUsername }),
 
- setusername: (username) => set({ username }),
- setuserinfo: (userinfo) => set({ userinfo }),
-
-   fetchuserdata: async (username) => {
-    if (!username) {
-      return;
-    }
+  fetchUserData: async () => {
+    set({ loading: true, error: null });
     try {
-      const results = await fetch(
+      const username = useStore.getState().username;
+
+      const userInfoResponse = await fetch(
         `https://api.github.com/users/${username}`
       );
-      const data = await results.json();
+      if (!userInfoResponse.ok) {
+        throw new Error("Failed to fetch user information");
+      }
+      const userInfo = await userInfoResponse.json();
+      set({ userinfo: userInfo });
 
-      set({ userdata: data, username });
+      const userReposResponse = await fetch(
+        `https://api.github.com/users/${username}/repos`
+      );
+      if (!userReposResponse.ok) {
+        throw new Error("Failed to fetch user repositories");
+      }
+      const userRepos = await userReposResponse.json();
+      set({ userrepos: userRepos });
+
+      const userFollowersResponse = await fetch(
+        `https://api.github.com/users/${username}/followers`
+      );
+      if (!userFollowersResponse.ok) {
+        throw new Error("Failed to fetch user followers");
+      }
+      const userFollowers = await userFollowersResponse.json();
+      set({ userfollowers: userFollowers });
+
+      const userFollowingResponse = await fetch(
+        `https://api.github.com/users/${username}/following`
+      );
+      if (!userFollowingResponse.ok) {
+        throw new Error("Failed to fetch user following");
+      }
+      const userFollowing = await userFollowingResponse.json();
+      set({ userfollowing: userFollowing });
+
+      set({ loading: false });
     } catch (error) {
-      console.error("Failed to fetch user's information", error);
+      console.error("Failed to fetch user data", error);
+      set({ error: error.message, loading: false });
     }
   },
+}));
 
-
- }));
-//     fetchUserProfile: async()=>{
-//         const fetchUserProfile = await fetch(https://api.github.com/users/${username});
-//         const UserProfile = await fetchUserProfile.json();
-
-//         set({UserProfile})
-//     },
-//     fetchUserRepo: async()=>{
-//         const fetchUserRepo = await fetch(https://api.github.com/users/${username}/repos);
-//         const UserRepo = await fetchUserRepo.json();
-
-//         set({UserRepo})
-//     },
-//     fetchUserFollowers: async()=>{
-//         const fetchUserFollowers = await fetch(https://api.github.com/users/${username}/followers);
-//         const UserFollowers = await fetchUserFollowers.json();
-
-//         set({UserFollowers})
-//     },
-//     fetchUserFollowing: async()=>{
-//         const fetchUserFollowing = await fetch(https://api.github.com/users/${username}/following);
-//         const UserFollowing = await fetchUserFollowing.json();
-
-//         set({UserFollowing})
-//     }
-
-
-
-// }));
-export default UserDetails;
+export default useStore;
